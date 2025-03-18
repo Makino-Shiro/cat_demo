@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainbow Cat Prowl Demo</title>
+  <link rel="stylesheet" href="cat.css">
+  <style>
+    /* Set the webpage background. You can use your own background image or color */
+    body {
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      /* Alternatively, use a background color */
+      /* background-color: #f0f0f0; */
+    }
+  </style>
+</head>
+<body>
+  <h1>Rainbow Cat Prowl Demo</h1>
+  <p>This demo showcases the interactive features of the Rainbow Cat extension.</p>
+  
+  <!-- Chrome API fallback: if chrome.runtime.getURL does not exist, return the original path -->
+  <script>
+    if (typeof chrome === 'undefined' || !chrome.runtime) {
+      window.chrome = {
+        runtime: {
+          getURL: function(path) {
+            return path;
+          }
+        }
+      };
+    }
+  </script>
+
+  <!-- Load the extension content script -->
+  <script src="contentScript.js"></script>
+</body>
+</html>
